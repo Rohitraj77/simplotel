@@ -134,29 +134,30 @@
 
     /* ===== Responsive tweaks ===== */
     @media (max-width: 768px) {
-      /* ✅ First page split 50-50 */
+      /* ✅ First page stack */
       #firstpage {
         flex-direction: column;
-        height: 100vh;
+        height: auto; /* allow natural height */
       }
-      #left, #right {
+      #left {
         width: 100%;
-        height: 50%;  /* equal split */
+        padding: 20px;
       }
-      #container {
-        max-width: 90%;
-      }
-      .lorem-title-small {
-        font-size: 24px;  /* ✅ bigger text in mobile */
-      }
-      .gradient-textbox {
-        font-size: 14px;  /* ✅ bigger text in mobile */
+      #right {
+        width: 100%;
+        height: auto; /* let image size naturally */
       }
       #right img {
-        object-fit: cover;
+        width: 100%;
+        height: auto;   /* ✅ shrink naturally */
+        max-height: 300px; /* ✅ prevent burger too tall */
+        object-fit: contain;
       }
+      #container { max-width: 90%; }
+      .lorem-title-small { font-size: 24px; }
+      .gradient-textbox { font-size: 14px; }
 
-      /* ✅ Secondpage stack */
+      /* ✅ Second page stack */
       #secondpage {
         flex-direction: column;
         height: auto;
@@ -165,12 +166,8 @@
         grid-template-columns: 1fr 1fr;
         gap: 8px;
       }
-      .left img {
-        height: 140px;  /* ✅ make images bigger in mobile */
-      }
-      .right main {
-        max-width: 95%;
-      }
+      .left img { height: 140px; }
+      .right main { max-width: 95%; }
     }
 
     @media (max-width: 480px) {
@@ -180,6 +177,7 @@
       .lorem-title-small { font-size: 20px; }
       .gradient-textbox { font-size: 14px; }
       .left img { height: 120px; }
+      #right img { max-height: 220px; } /* ✅ smaller burger on very small phones */
     }
   </style>
 </head>
