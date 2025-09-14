@@ -87,7 +87,7 @@
     #right img {
       width: 100%;
       height: 100%;
-      object-fit: cover;   /* ✅ always cover full */
+      object-fit: cover;  
       border-radius: 0;    
     }
 
@@ -98,7 +98,7 @@
       padding: 15px;
       gap: 15px;
       background: linear-gradient(to right, #fef7ad, #feb3ee);
-      height: 100vh;
+      height: 100vh;  /* ✅ match screen */
     }
     .left {
       flex: 1;
@@ -146,7 +146,7 @@
       #right img {
         width: 100%;
         height: 100%;
-        object-fit: cover;   /* ✅ no gaps in mobile */
+        object-fit: cover;     
       }
 
       /* ✅ Secondpage fix */
@@ -159,6 +159,7 @@
         height: 50%; 
       }
       .left {
+        display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 6px;
       }
@@ -179,8 +180,13 @@
       .lorem-title-small { font-size: 18px; }
       .gradient-textbox { font-size: 12px; }
 
+      /* ✅ Second page images smaller */
+      .left {
+        grid-template-columns: 1fr 1fr;
+      }
       .left img {
-        aspect-ratio: 1/1; 
+        height: auto;
+        aspect-ratio: 1/1;   /* square look */
       }
     }
   </style>
