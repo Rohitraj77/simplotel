@@ -1,185 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Restaurant - Order Food</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; overflow-x: hidden; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>Restaurant - Order Food</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    /* ===== Navbar ===== */
-    .nav-header {
-      background-color: #ff7070;
-      padding: 10px 0;
-      text-align: center;
-    }
-    .nav-links {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 40px;
-      list-style: none;
-    }
-    .nav-links a {
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: bold;
-      text-transform: uppercase;
-      color: #000;
-    }
-    .hamburger { font-size: 18px; font-weight: bold; }
+      body {
+        font-family: Arial, sans-serif;
+        min-height: 100vh;
+        overflow-x: auto; /* allow scroll if screen is small */
+      }
 
-    /* ===== First Page ===== */
-    #firstpage {
-      display: flex;
-      min-height: 70vh;
-    }
-    #left, #right {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    #left {
-      background: linear-gradient(to right, #fdf2a5, #ffc6c7);
-      padding: 30px;
-    }
-    #container { max-width: 85%; }
-    .lorem-title-small {
-      font-size: 26px;
-      font-weight: 900;
-      margin-bottom: 15px;
-    }
-    .gradient-textbox {
-      background: rgba(255,255,255,0.7);
-      padding: 14px;
-      border-radius: 8px;
-      font-size: 15px;
-      margin-bottom: 15px;
-      line-height: 1.5;
-    }
-    button {
-      background: #ff6b6b;
-      border: none;
-      color: #fff;
-      padding: 10px 18px;
-      font-size: 14px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    #right img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;   /* ✅ fills full right half */
-    }
+      /* Navigation Header */
+      .nav-header {
+        background-color: #ff7070;
+        padding: 20px 0;
+        text-align: center;
+      }
 
-    /* ===== Second Page ===== */
-    #secondpage {
-      display: flex;
-      padding: 20px;
-      gap: 20px;
-      background: linear-gradient(to right, #fef7ad, #feb3ee);
-      min-height: 70vh;
-    }
-    .left {
-      flex: 1;
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-auto-rows: 1fr;
-      gap: 10px;
-    }
-    .left img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-    .right {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .right main {
-      background: #ff7070;
-      padding: 16px;
-      border-radius: 8px;
-      width: 80%;
-      max-width: 300px;
-    }
-    .right main h2 {
-      font-size: 18px;
-      font-weight: 900;
-      color: #000;
-      margin: 10px 0;
-    }
-    .right main section { font-size: 13px; }
+      .nav-links {
+        display: flex;
+        justify-content: center;
+        gap: 60px;
+        list-style: none;
+        align-items: center;
+        flex-wrap: nowrap; /* no wrapping */
+      }
 
-    /* ===== Responsive ===== */
-    @media (max-width: 768px) {
-      #firstpage, #secondpage {
+      .nav-links a {
+        color: #000;
+        text-decoration: none;
+        font-size: 1.2vw; /* scales with screen width */
+        min-font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        padding: 10px 20px;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+      }
+
+      .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 5px;
+      }
+
+      /* First page */
+      #firstpage {
+        height: 90vh;
+        display: flex;
+        flex-wrap: nowrap; /* lock side-by-side */
+      }
+
+      #left,
+      #right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 50%;
+      }
+
+      #left {
+        background-image: linear-gradient(to right, #fdf2a5, #ffc6c7);
+      }
+
+      #right img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      #container {
+        height: 70%;
+        width: 70%;
+        font-size: 1.2vw; /* responsive font scaling */
+      }
+
+      #container section {
+        height: 33.33%;
+      }
+
+      section {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+      }
+
+      section button {
+        background-color: #ff6b6b;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1vw;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        width: 35%;
+        transition: all 0.3s ease;
+      }
+
+      .gradient-textbox {
+        background: linear-gradient(to right, #fdf2a5, #ffc6c7);
+        padding: 20px;
+        border-radius: 10px;
+        font-size: 1vw;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      /* Second page */
+      #secondpage {
+        height: 100vh;
+        background-image: linear-gradient(to right, #fef7ad, #feb3ee);
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: nowrap; /* lock side-by-side */
+      }
+
+      .left {
+        height: 100vh;
+        width: 50vw;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 10px;
+      }
+
+      .right {
+        height: 100vh;
+        width: 50vw;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        padding: 10px;
+      }
+
+      .left aside {
+        height: 70%;
+        width: 80%;
+        display: flex;
+      }
+
+      aside section {
+        margin: 10px;
+        height: 100%;
+        width: 50%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
         flex-direction: column;
       }
-      #right img {
-        height: 250px; /* ✅ shrink burger on mobile */
-      }
-      .left {
-        grid-template-columns: 1fr 1fr;
-        grid-auto-rows: 120px;
-      }
-      .right main {
-        width: 100%;
-        max-width: none;
-      }
-    }
-  </style>
-</head>
-<body>
-  <header class="nav-header">
-    <nav>
-      <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Order</a></li>
-        <li><a href="#">Food</a></li>
-        <li><a href="#">Restaurant</a></li>
-        <li><a href="#">Testimonials</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><span class="hamburger">≡</span></li>
-      </ul>
-    </nav>
-  </header>
 
-  <div id="firstpage">
-    <div id="left">
-      <div id="container">
-        <h2 class="lorem-title-small">LOREM IPSUM</h2>
-        <div class="gradient-textbox">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id est vitae
-          dolor rhoncus tristique. Maecenas metus quam, rhoncus euismod lorem in,
-          sollicitudin viverra eros. Donec dictum luctus quam ut tristique.
+      aside section img,
+      #bigpic img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .right main {
+        display: flex;
+        justify-content: left;
+        align-items: left;
+        flex-direction: column;
+        height: 35%;
+        width: 65%;
+        position: relative;
+        left: -20px;
+        background-color: #ff7070;
+        padding: 10px;
+      }
+
+      .right main section {
+        padding: 10px;
+        font-size: 1vw;
+      }
+
+      .lorem-title-small {
+        font-size: 2.5vw;
+        font-weight: 900;
+        color: #000;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      /* ✅ Prevent layout changes */
+      @media (max-width: 768px) {
+        body {
+          overflow-x: auto; /* enable scroll on small screens */
+        }
+
+        #firstpage, #secondpage {
+          flex-wrap: nowrap; /* force side-by-side */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav-header">
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Order</a></li>
+          <li><a href="#">Food</a></li>
+          <li><a href="#">Restaurant</a></li>
+          <li><a href="#">Testimonials</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><span class="hamburger">≡</span></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="firstpage">
+      <div id="left">
+        <div id="container">
+          <section><h2 class="lorem-title-small">LOREM IPSUM</h2></section>
+          <section class="gradient-textbox">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id est vitae
+            dolor rhoncus tristique. Maecenas metus quam, rhoncus euismod lorem in,
+            sollicitudin viverra eros. Donec dictum luctus quam ut tristique.
+          </section>
+          <section><button>Click Me</button></section>
         </div>
-        <button>Click Me</button>
+      </div>
+      <div id="right">
+        <img src="burger.jpg" alt="burger" />
       </div>
     </div>
-    <div id="right">
-      <img src="burger.jpg" alt="burger"/>
-    </div>
-  </div>
 
-  <div id="secondpage">
-    <div class="left">
-      <img src="stag.jpg" alt="stag"/>
-      <img src="food.jpg" alt="food"/>
-      <img src="jana.jpg" alt="jana"/>
+    <div id="secondpage">
+      <div class="left">
+        <aside>
+          <section><img src="stag.jpg" alt="" /></section>
+          <section><img src="food.jpg" alt="" /></section>
+          <section id="bigpic"><img src="jana.jpg" alt="" /></section>
+        </aside>
+      </div>
+      <div class="right">
+        <main>
+          <section>LOREM IPSUM</section>
+          <section>
+            <h2 class="lorem-title-small" style="text-align: left">
+              LOREM IPSUM SET ADMEMIR
+            </h2>
+          </section>
+          <section style="position: relative; top: -10px">
+            click
+            <span><img src="./icons8-arrow-30.png" alt="" style="height: 20px; width: 20px; padding-left: 5px" /></span>
+          </section>
+        </main>
+      </div>
     </div>
-    <div class="right">
-      <main>
-        <section>LOREM IPSUM</section>
-        <h2>LOREM IPSUM SET ADEMIR</h2>
-        <section>Click →</section>
-      </main>
-    </div>
-  </div>
-</body>
+  </body>
 </html>
