@@ -81,6 +81,7 @@
       text-transform: uppercase;
     }
 
+    /* ✅ Right image for desktop */
     #right {
       height: 100%;
       width: 100%;
@@ -134,28 +135,26 @@
 
     /* ===== Responsive tweaks ===== */
     @media (max-width: 768px) {
-      /* ✅ First page stack */
+      /* ✅ First page layout */
       #firstpage {
         flex-direction: column;
-        height: auto; /* allow natural height */
+        height: auto;
       }
-      #left {
+      #left, #right {
         width: 100%;
-        padding: 20px;
-      }
-      #right {
-        width: 100%;
-        height: auto; /* let image size naturally */
-      }
-      #right img {
-        width: 100%;
-        height: auto;   /* ✅ shrink naturally */
-        max-height: 300px; /* ✅ prevent burger too tall */
-        object-fit: contain;
+        height: auto;
       }
       #container { max-width: 90%; }
       .lorem-title-small { font-size: 24px; }
       .gradient-textbox { font-size: 14px; }
+
+      /* ✅ Burger smaller */
+      #right img {
+        width: 100%;
+        height: auto;
+        max-height: 220px;  /* limit size */
+        object-fit: contain;
+      }
 
       /* ✅ Second page stack */
       #secondpage {
@@ -166,7 +165,9 @@
         grid-template-columns: 1fr 1fr;
         gap: 8px;
       }
-      .left img { height: 140px; }
+      .left img {
+        height: 160px; /* bigger on mobile */
+      }
       .right main { max-width: 95%; }
     }
 
@@ -176,8 +177,10 @@
       button { font-size: 12px; padding: 8px 14px; }
       .lorem-title-small { font-size: 20px; }
       .gradient-textbox { font-size: 14px; }
-      .left img { height: 120px; }
-      #right img { max-height: 220px; } /* ✅ smaller burger on very small phones */
+
+      /* ✅ Make images fit smaller screens */
+      .left img { height: 140px; }
+      #right img { max-height: 180px; }
     }
   </style>
 </head>
