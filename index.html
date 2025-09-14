@@ -39,7 +39,7 @@
     }
     .hamburger { font-size: 18px; font-weight: bold; }
 
-    /* ===== First Page ===== */
+    /* ===== First Page (Desktop) ===== */
     #firstpage {
       display: flex;
       flex-direction: row;
@@ -81,7 +81,6 @@
       text-transform: uppercase;
     }
 
-    /* ✅ Right image for desktop */
     #right {
       height: 100%;
       width: 100%;
@@ -89,7 +88,7 @@
     #right img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: cover; /* ✅ fills desktop */
       border-radius: 0;
     }
 
@@ -135,7 +134,7 @@
 
     /* ===== Responsive tweaks ===== */
     @media (max-width: 768px) {
-      /* ✅ First page layout */
+      /* ✅ First page stack */
       #firstpage {
         flex-direction: column;
         height: auto;
@@ -146,14 +145,16 @@
       }
       #container { max-width: 90%; }
       .lorem-title-small { font-size: 24px; }
-      .gradient-textbox { font-size: 14px; }
+      .gradient-textbox { font-size: 15px; }
 
-      /* ✅ Burger smaller */
+      /* ✅ Burger image small */
       #right img {
-        width: 100%;
-        height: auto;
-        max-height: 220px;  /* limit size */
+        width: 80%;         /* smaller width */
+        height: auto;       /* natural height */
+        max-height: 180px;  /* limit size */
         object-fit: contain;
+        margin: 10px auto;  /* center it */
+        display: block;
       }
 
       /* ✅ Second page stack */
@@ -166,21 +167,26 @@
         gap: 8px;
       }
       .left img {
-        height: 160px; /* bigger on mobile */
+        height: 160px;
       }
-      .right main { max-width: 95%; }
+      .right main {
+        max-width: 95%;
+      }
     }
 
     @media (max-width: 480px) {
-      .nav-links { gap: 8px; }
+      .nav-links { gap: 6px; }
       .nav-links a { font-size: 12px; }
       button { font-size: 12px; padding: 8px 14px; }
       .lorem-title-small { font-size: 20px; }
       .gradient-textbox { font-size: 14px; }
 
-      /* ✅ Make images fit smaller screens */
+      /* ✅ Even smaller burger */
+      #right img {
+        max-height: 150px;
+        width: 80%;
+      }
       .left img { height: 140px; }
-      #right img { max-height: 180px; }
     }
   </style>
 </head>
@@ -199,6 +205,7 @@
     </nav>
   </header>
 
+  <!-- ===== First Page ===== -->
   <div id="firstpage">
     <div id="left">
       <div id="container">
@@ -216,6 +223,7 @@
     </div>
   </div>
 
+  <!-- ===== Second Page ===== -->
   <div id="secondpage">
     <div class="left">
       <img src="stag.jpg" alt="stag"/>
