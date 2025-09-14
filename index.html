@@ -11,23 +11,22 @@
     /* NAVBAR */
     .nav-header {
       background-color: #ff7070;
-      padding: 10px 0;
+      padding: 8px 0;
     }
     .nav-links {
       display: flex;
       justify-content: center;
       align-items: center;
       list-style: none;
-      gap: 20px;
+      gap: 15px;
       flex-wrap: nowrap;
     }
     .nav-links a {
       color: #000;
       text-decoration: none;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       text-transform: uppercase;
-      padding: 4px 6px;
       white-space: nowrap;
     }
     .hamburger { font-weight: bold; font-size: 14px; }
@@ -43,37 +42,37 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 20px;
+      padding: 15px;
     }
     #left {
       background: linear-gradient(to right, #fdf2a5, #ffc6c7);
     }
-    #container { max-width: 350px; }
+    #container { max-width: 320px; }
     .lorem-title-small {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 900;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     .gradient-textbox {
       background: rgba(255,255,255,0.6);
-      padding: 12px;
+      padding: 10px;
       border-radius: 6px;
-      font-size: 13px;
-      margin-bottom: 16px;
-      line-height: 1.5;
+      font-size: 12px;
+      margin-bottom: 14px;
+      line-height: 1.4;
     }
     button {
       background: #ff6b6b;
       border: none;
       color: #fff;
-      padding: 8px 16px;
+      padding: 6px 12px;
       font-size: 12px;
       border-radius: 5px;
       cursor: pointer;
     }
     #right img {
       width: 100%;
-      max-width: 350px;
+      max-width: 300px;
       border-radius: 8px;
       object-fit: cover;
     }
@@ -83,20 +82,20 @@
       display: flex;
       flex-wrap: wrap;
       background: linear-gradient(to right, #fef7ad, #feb3ee);
-      padding: 20px;
-      gap: 20px;
+      padding: 15px;
+      gap: 15px;
     }
     .left {
       flex: 1 1 50%;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 8px;
     }
     .left img {
       width: 100%;
-      height: 120px;
+      height: 100px;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 6px;
     }
     .right {
       flex: 1 1 50%;
@@ -106,27 +105,26 @@
     }
     .right main {
       background: #ff7070;
-      padding: 14px;
-      border-radius: 10px;
-      max-width: 260px;
+      padding: 10px;
+      border-radius: 8px;
+      max-width: 240px;
     }
     .right main h2 {
       color: #000;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 900;
-      margin: 8px 0;
+      margin: 6px 0;
     }
 
-    /* ✅ RESPONSIVE FIX FOR PHONE */
+    /* ✅ PHONE VIEW EXACTLY LIKE IMAGE */
     @media (max-width: 768px) {
-      .nav-links { gap: 12px; }
-      .nav-links a { font-size: 12px; }
-      #firstpage { flex-direction: column; }
-      #left, #right { flex: 1 1 100%; }
+      .nav-links { gap: 8px; }
+      .nav-links a { font-size: 11px; }
+      #firstpage { flex-direction: row; }
+      #left, #right { flex: 1 1 50%; }
       #right img { max-width: 100%; height: auto; }
-      #secondpage { flex-direction: column; }
-      .left, .right { flex: 1 1 100%; }
-      .left img { height: 100px; }
+      #secondpage { flex-direction: row; }
+      .left, .right { flex: 1 1 50%; }
     }
   </style>
 </head>
