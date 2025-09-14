@@ -18,9 +18,9 @@
       display: flex;
       justify-content: center;   /* ✅ keep centered */
       align-items: center;
-      gap: clamp(10px, 4vw, 60px); /* responsive spacing */
+      gap: clamp(10px, 4vw, 60px);
       list-style: none;
-      flex-wrap: wrap;           /* ✅ allow wrapping on small screens */
+      flex-wrap: wrap;
     }
     .nav-links a {
       text-decoration: none;
@@ -41,20 +41,20 @@
     /* ===== First Page ===== */
     #firstpage {
       display: flex;
-      flex-direction: row;   /* ✅ side by side */
-      min-height: 70vh;
+      flex-direction: row;
+      height: 90vh;  /* ✅ fixed height like design */
     }
     #left, #right {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 15px;
     }
     #left {
       background: linear-gradient(to right, #fdf2a5, #ffc6c7);
+      padding: 20px;
     }
-    #container { max-width: 90%; }
+    #container { max-width: 80%; }
     .lorem-title-small {
       font-size: clamp(20px, 4vw, 40px);
       font-weight: 900;
@@ -73,23 +73,29 @@
       background: #ff6b6b;
       border: none;
       color: #fff;
-      padding: 8px 14px;
+      padding: 10px 20px;
       font-size: clamp(11px, 2vw, 14px);
       border-radius: 5px;
       cursor: pointer;
       text-transform: uppercase;
     }
+
+    /* ✅ Right image fills full half */
+    #right {
+      height: 100%;
+      width: 100%;
+    }
     #right img {
       width: 100%;
-      height: auto;
-      border-radius: 8px;
-      object-fit: cover;
+      height: 100%;
+      object-fit: cover;   /* ✅ cover full space */
+      border-radius: 0;    /* no rounding */
     }
 
     /* ===== Second Page ===== */
     #secondpage {
       display: flex;
-      flex-direction: row;   /* ✅ side by side */
+      flex-direction: row;
       padding: 15px;
       gap: 15px;
       background: linear-gradient(to right, #fef7ad, #feb3ee);
@@ -128,7 +134,8 @@
 
     /* ===== Responsive tweaks ===== */
     @media (max-width: 768px) {
-      #firstpage, #secondpage { flex-direction: column; } /* ✅ stack on small screens */
+      #firstpage, #secondpage { flex-direction: column; }
+      #firstpage { height: auto; } /* stack gracefully */
       .left img { height: 120px; }
     }
     @media (max-width: 480px) {
