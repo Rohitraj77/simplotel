@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Restaurant - Order Food</title>
     <style>
       * {
@@ -14,10 +14,52 @@
       body {
         font-family: Arial, sans-serif;
         min-height: 100vh;
-        overflow-x: auto; /* allow scroll if screen is small */
+        overflow-x: hidden; /* stop horizontal scroll */
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
-      /* Navigation Header */
+      /* ✅ Scaling wrapper */
+      .scale-container {
+        width: 1920px; /* base width (desktop design) */
+        max-width: 100%;
+        transform-origin: top center;
+      }
+
+      /* Scale dynamically for different screens */
+      @media (max-width: 1600px) {
+        .scale-container {
+          transform: scale(0.9);
+        }
+      }
+
+      @media (max-width: 1200px) {
+        .scale-container {
+          transform: scale(0.8);
+        }
+      }
+
+      @media (max-width: 992px) {
+        .scale-container {
+          transform: scale(0.7);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .scale-container {
+          transform: scale(0.6);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .scale-container {
+          transform: scale(0.5);
+        }
+      }
+
+      /* ====== Your Original Styles Below ====== */
+
       .nav-header {
         background-color: #ff7070;
         padding: 20px 0;
@@ -30,20 +72,17 @@
         gap: 60px;
         list-style: none;
         align-items: center;
-        flex-wrap: nowrap; /* no wrapping */
       }
 
       .nav-links a {
         color: #000;
         text-decoration: none;
-        font-size: 1.2vw; /* scales with screen width */
-        min-font-size: 12px;
+        font-size: 18px;
         font-weight: bold;
         text-transform: uppercase;
         letter-spacing: 2px;
         padding: 10px 20px;
         transition: all 0.3s ease;
-        white-space: nowrap;
       }
 
       .nav-links a:hover {
@@ -51,11 +90,9 @@
         border-radius: 5px;
       }
 
-      /* First page */
       #firstpage {
         height: 90vh;
         display: flex;
-        flex-wrap: nowrap; /* lock side-by-side */
       }
 
       #left,
@@ -63,7 +100,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100%;
         width: 50%;
       }
 
@@ -78,19 +114,7 @@
       }
 
       #container {
-        height: 70%;
         width: 70%;
-        font-size: 1.2vw; /* responsive font scaling */
-      }
-
-      #container section {
-        height: 33.33%;
-      }
-
-      section {
-        display: flex;
-        justify-content: left;
-        align-items: center;
       }
 
       section button {
@@ -98,165 +122,131 @@
         color: white;
         border: none;
         padding: 10px 20px;
-        font-size: 1vw;
+        font-size: 14px;
         text-transform: uppercase;
         letter-spacing: 1px;
         cursor: pointer;
-        width: 35%;
-        transition: all 0.3s ease;
+        border-radius: 5px;
       }
 
       .gradient-textbox {
         background: linear-gradient(to right, #fdf2a5, #ffc6c7);
         padding: 20px;
         border-radius: 10px;
-        font-size: 1vw;
+        font-size: 16px;
         line-height: 1.6;
         color: #333;
       }
 
-      /* Second page */
       #secondpage {
         height: 100vh;
         background-image: linear-gradient(to right, #fef7ad, #feb3ee);
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-        flex-wrap: nowrap; /* lock side-by-side */
       }
 
-      .left {
-        height: 100vh;
-        width: 50vw;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        padding: 10px;
-      }
-
+      .left,
       .right {
-        height: 100vh;
-        width: 50vw;
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        padding: 10px;
+        width: 50%;
+        padding: 15px;
       }
 
       .left aside {
-        height: 70%;
-        width: 80%;
         display: flex;
+        width: 100%;
       }
 
       aside section {
-        margin: 10px;
-        height: 100%;
         width: 50%;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: center;
         align-items: center;
         flex-direction: column;
+        padding: 10px;
       }
 
       aside section img,
       #bigpic img {
         width: 100%;
         height: auto;
-        object-fit: cover;
+        border-radius: 10px;
       }
 
       .right main {
         display: flex;
-        justify-content: left;
-        align-items: left;
         flex-direction: column;
-        height: 35%;
-        width: 65%;
-        position: relative;
-        left: -20px;
+        gap: 15px;
         background-color: #ff7070;
-        padding: 10px;
-      }
-
-      .right main section {
-        padding: 10px;
-        font-size: 1vw;
+        padding: 20px;
+        border-radius: 10px;
+        color: white;
       }
 
       .lorem-title-small {
-        font-size: 2.5vw;
+        font-size: 36px;
         font-weight: 900;
         color: #000;
-        letter-spacing: 2px;
         text-transform: uppercase;
-      }
-
-      /* ✅ Prevent layout changes */
-      @media (max-width: 768px) {
-        body {
-          overflow-x: auto; /* enable scroll on small screens */
-        }
-
-        #firstpage, #secondpage {
-          flex-wrap: nowrap; /* force side-by-side */
-        }
+        letter-spacing: 2px;
       }
     </style>
   </head>
   <body>
-    <header class="nav-header">
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Order</a></li>
-          <li><a href="#">Food</a></li>
-          <li><a href="#">Restaurant</a></li>
-          <li><a href="#">Testimonials</a></li>
-          <li><a href="#">Contact Us</a></li>
-          <li><span class="hamburger">≡</span></li>
-        </ul>
-      </nav>
-    </header>
+    <div class="scale-container">
+      <header class="nav-header">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Order</a></li>
+            <li><a href="#">Food</a></li>
+            <li><a href="#">Restaurant</a></li>
+            <li><a href="#">Testimonials</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><span class="hamburger">≡</span></li>
+          </ul>
+        </nav>
+      </header>
 
-    <div id="firstpage">
-      <div id="left">
-        <div id="container">
-          <section><h2 class="lorem-title-small">LOREM IPSUM</h2></section>
-          <section class="gradient-textbox">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id est vitae
-            dolor rhoncus tristique. Maecenas metus quam, rhoncus euismod lorem in,
-            sollicitudin viverra eros. Donec dictum luctus quam ut tristique.
-          </section>
-          <section><button>Click Me</button></section>
+      <div id="firstpage">
+        <div id="left">
+          <div id="container">
+            <section><h2 class="lorem-title-small">LOREM IPSUM</h2></section>
+            <section class="gradient-textbox">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id est vitae
+              dolor rhoncus tristique. Maecenas metus quam, rhoncus euismod lorem in,
+              sollicitudin viverra eros. Donec dictum luctus quam ut tristique.
+            </section>
+            <section><button>Click Me</button></section>
+          </div>
+        </div>
+        <div id="right">
+          <img src="burger.jpg" alt="burger" />
         </div>
       </div>
-      <div id="right">
-        <img src="burger.jpg" alt="burger" />
-      </div>
-    </div>
 
-    <div id="secondpage">
-      <div class="left">
-        <aside>
-          <section><img src="stag.jpg" alt="" /></section>
-          <section><img src="food.jpg" alt="" /></section>
-          <section id="bigpic"><img src="jana.jpg" alt="" /></section>
-        </aside>
-      </div>
-      <div class="right">
-        <main>
-          <section>LOREM IPSUM</section>
-          <section>
-            <h2 class="lorem-title-small" style="text-align: left">
-              LOREM IPSUM SET ADMEMIR
-            </h2>
-          </section>
-          <section style="position: relative; top: -10px">
-            click
-            <span><img src="./icons8-arrow-30.png" alt="" style="height: 20px; width: 20px; padding-left: 5px" /></span>
-          </section>
-        </main>
+      <div id="secondpage">
+        <div class="left">
+          <aside>
+            <section><img src="stag.jpg" alt="stag" /></section>
+            <section><img src="food.jpg" alt="food" /></section>
+            <section id="bigpic"><img src="jana.jpg" alt="jana" /></section>
+          </aside>
+        </div>
+        <div class="right">
+          <main>
+            <section>LOREM IPSUM</section>
+            <section>
+              <h2 class="lorem-title-small" style="text-align: left">
+                LOREM IPSUM SET ADMEMIR
+              </h2>
+            </section>
+            <section>
+              click
+              <span><img src="./icons8-arrow-30.png" alt="arrow" style="height: 20px; width: 20px; padding-left: 5px" /></span>
+            </section>
+          </main>
+        </div>
       </div>
     </div>
   </body>
