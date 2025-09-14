@@ -1,164 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <!-- ✅ disable zoom -->
+    <meta charset="utf-8" />
+    <!-- disable pinch/zoom; page fits and is readable -->
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
     <title>Restaurant - Order Food</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
+      * { margin: 0; padding: 0; box-sizing: border-box; }
       body {
         font-family: Arial, sans-serif;
         min-height: 100vh;
-        overflow-x: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        background: #fff;
       }
 
-      /* ✅ Scaling wrapper */
-      .scale-container {
-        width: 1920px; /* base width (desktop design) */
-        max-width: 100%;
-        transform-origin: top center;
-      }
-
-      /* Scale dynamically for different screens */
-      @media (max-width: 1600px) {
-        .scale-container {
-          transform: scale(0.95);
-        }
-      }
-      @media (max-width: 1200px) {
-        .scale-container {
-          transform: scale(0.9);
-        }
-      }
-      @media (max-width: 992px) {
-        .scale-container {
-          transform: scale(0.85);
-        }
-      }
-      @media (max-width: 768px) {
-        .scale-container {
-          transform: scale(0.8);
-        }
-        /* ✅ Navbar fix on tablets/mobiles */
-        .nav-links {
-          gap: 20px;
-          flex-wrap: wrap;
-          padding: 0 15px; /* keep links away from edges */
-        }
-        .nav-links a {
-          font-size: 14px;
-          padding: 6px 10px;
-        }
-        /* ✅ Image fix */
-        #right img {
-          height: auto;
-          max-height: 60vh;
-          width: 100%;
-          object-fit: contain;
-        }
-      }
-      @media (max-width: 480px) {
-        .scale-container {
-          transform: scale(0.75);
-        }
-        .nav-links {
-          gap: 10px;
-          padding: 0 10px;
-        }
-        .nav-links a {
-          font-size: 12px;
-          padding: 4px 6px;
-        }
-        #right img {
-          max-height: 50vh;
-          object-fit: contain;
-        }
-      }
-
-      /* ====== Your Original Styles Below ====== */
-
+      /* ========== NAVBAR (full width) ========== */
       .nav-header {
+        width: 100%;
         background-color: #ff7070;
-        padding: 15px 0;
-        text-align: center;
+      }
+
+      /* inner container keeps links aligned with the page content */
+      .nav-inner {
+        width: 1920px;            /* same base width as scaled content */
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 12px 30px;      /* keep space from edges */
       }
 
       .nav-links {
         display: flex;
         justify-content: center;
+        align-items: center;
         gap: 60px;
         list-style: none;
-        align-items: center;
-        padding: 0 30px; /* ✅ add padding to prevent edge cut */
       }
 
       .nav-links a {
         color: #000;
         text-decoration: none;
         font-size: 20px;
-        font-weight: bold;
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 2px;
-        padding: 10px 20px;
-        transition: all 0.3s ease;
+        letter-spacing: 1.5px;
+        padding: 6px 10px;
+        white-space: nowrap;
       }
 
+      /* small hover style */
       .nav-links a:hover {
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 5px;
+        background: rgba(255,255,255,0.18);
+        border-radius: 4px;
       }
 
-      #firstpage {
-        height: 90vh;
-        display: flex;
+      /* ========== SCALED PAGE CONTENT ========== */
+      .scale-wrapper {
+        display: block;
+        width: 1920px;          /* base design width */
+        max-width: 100%;
+        margin: 0 auto;
+        transform-origin: top center;
       }
 
-      #left,
-      #right {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 50%;
-      }
+      /* scale progressively on smaller screens */
+      @media (max-width: 1600px) { .scale-wrapper { transform: scale(0.95); } }
+      @media (max-width: 1200px) { .scale-wrapper { transform: scale(0.9); } }
+      @media (max-width: 992px)  { .scale-wrapper { transform: scale(0.85); } }
+      @media (max-width: 768px)  { .scale-wrapper { transform: scale(0.8); } }
+      @media (max-width: 480px)  { .scale-wrapper { transform: scale(0.75); } }
 
-      #left {
-        background-image: linear-gradient(to right, #fdf2a5, #ffc6c7);
+      /* FIRST PAGE */
+      #firstpage { height: 90vh; display: flex; }
+      #left, #right {
+        display:flex; justify-content:center; align-items:center;
+        width:50%;
       }
-
+      #left { background-image: linear-gradient(to right, #fdf2a5, #ffc6c7); }
       #right img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: center center; /* center image crop */
+        display: block;
+        border-radius: 0;
       }
 
-      #container {
-        width: 70%;
+      /* content box on left */
+      #container { width: 70%; }
+      .lorem-title-small {
+        font-size: 40px; font-weight:900; color:#000;
+        text-transform:uppercase; letter-spacing:2px; margin-bottom: 12px;
       }
-
-      section button {
-        background-color: #ff6b6b;
-        color: white;
-        border: none;
-        padding: 12px 24px;
-        font-size: 16px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        cursor: pointer;
-        border-radius: 5px;
-      }
-
       .gradient-textbox {
         background: linear-gradient(to right, #fdf2a5, #ffc6c7);
         padding: 24px;
@@ -166,95 +100,94 @@
         font-size: 18px;
         line-height: 1.6;
         color: #333;
+        box-shadow: none;
+      }
+      section button {
+        background-color: #ff6b6b; color:white; border:none;
+        padding: 12px 24px; font-size:16px; text-transform:uppercase;
+        letter-spacing:1px; border-radius:5px; cursor:pointer;
       }
 
+      /* SECOND PAGE */
       #secondpage {
         height: 100vh;
         background-image: linear-gradient(to right, #fef7ad, #feb3ee);
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
+        display:flex; justify-content:space-evenly; align-items:center;
       }
-
-      .left,
-      .right {
-        width: 50%;
-        padding: 15px;
-      }
-
-      .left aside {
-        display: flex;
-        width: 100%;
-      }
-
-      aside section {
-        width: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        padding: 10px;
-      }
-
-      aside section img,
-      #bigpic img {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-      }
+      .left, .right { width:50%; padding:15px; }
+      .left aside { display:flex; width:100%; gap:10px; flex-wrap:wrap; }
+      aside section { width:48%; display:flex; justify-content:center; align-items:center; }
+      aside section img, #bigpic img { width:100%; height:auto; border-radius:10px; }
 
       .right main {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        background-color: #ff7070;
-        padding: 24px;
-        border-radius: 10px;
-        color: white;
+        display:flex; flex-direction:column; gap:15px;
+        background-color:#ff7070; padding:24px; border-radius:10px; color:#fff;
+        max-width:420px;
       }
 
-      .lorem-title-small {
-        font-size: 40px;
-        font-weight: 900;
-        color: #000;
-        text-transform: uppercase;
-        letter-spacing: 2px;
+      /* ========== MOBILE / TABLET TWEAKS ========== */
+      /* fix navbar spacing and sizes on smaller screens */
+      @media (max-width: 992px) {
+        .nav-links { gap: 30px; }
+        .nav-links a { font-size:16px; }
+      }
+      @media (max-width: 768px) {
+        .nav-inner { padding: 10px 16px; }
+        .nav-links { gap: 18px; }
+        .nav-links a { font-size:14px; padding:4px 8px; }
+        /* reduce image height to avoid huge crop */
+        #right img { object-position: center center; max-height: 65vh; height: auto; }
+        #firstpage { height: auto; min-height: 80vh; }
+      }
+      @media (max-width: 480px) {
+        .nav-links { gap: 12px; }
+        .nav-links a { font-size:12px; padding:4px 6px; }
+        /* image smaller for phones */
+        #right img { max-height: 55vh; height: auto; object-fit: contain; }
+        #firstpage { min-height: 75vh; }
       }
     </style>
   </head>
-  <body>
-    <div class="scale-container">
-      <header class="nav-header">
-        <nav>
-          <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Order</a></li>
-            <li><a href="#">Food</a></li>
-            <li><a href="#">Restaurant</a></li>
-            <li><a href="#">Testimonials</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><span class="hamburger">≡</span></li>
-          </ul>
-        </nav>
-      </header>
 
+  <body>
+    <!-- NAVBAR outside the scaled content so the red bar spans full width -->
+    <header class="nav-header">
+      <div class="nav-inner">
+        <ul class="nav-links" aria-label="Main navigation">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Order</a></li>
+          <li><a href="#">Food</a></li>
+          <li><a href="#">Restaurant</a></li>
+          <li><a href="#">Testimonials</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><span class="hamburger">≡</span></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- scaled content: desktop layout preserved, scales down on small screens -->
+    <div class="scale-wrapper">
+      <!-- First page -->
       <div id="firstpage">
         <div id="left">
           <div id="container">
             <section><h2 class="lorem-title-small">LOREM IPSUM</h2></section>
             <section class="gradient-textbox">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id est
-              vitae dolor rhoncus tristique. Maecenas metus quam, rhoncus euismod lorem in,
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id est vitae
+              dolor rhoncus tristique. Maecenas metus quam, rhoncus euismod lorem in,
               sollicitudin viverra eros. Donec dictum luctus quam ut tristique.
             </section>
-            <section><button>Click Me</button></section>
+            <section style="margin-top:18px;"><button>Click Me</button></section>
           </div>
         </div>
+
         <div id="right">
+          <!-- image will be sized better on mobile -->
           <img src="burger.jpg" alt="burger" />
         </div>
       </div>
 
+      <!-- Second page -->
       <div id="secondpage">
         <div class="left">
           <aside>
@@ -263,6 +196,7 @@
             <section id="bigpic"><img src="jana.jpg" alt="jana" /></section>
           </aside>
         </div>
+
         <div class="right">
           <main>
             <section>LOREM IPSUM</section>
@@ -273,12 +207,7 @@
             </section>
             <section>
               click
-              <span
-                ><img
-                  src="./icons8-arrow-30.png"
-                  alt="arrow"
-                  style="height: 20px; width: 20px; padding-left: 5px"
-              /></span>
+              <span><img src="./icons8-arrow-30.png" alt="arrow" style="height:20px;width:20px;padding-left:5px"/></span>
             </section>
           </main>
         </div>
