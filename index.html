@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <!-- ✅ disable zoom -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Restaurant - Order Food</title>
     <style>
       * {
@@ -48,19 +51,21 @@
         .scale-container {
           transform: scale(0.8);
         }
-        /* ✅ Fix navbar on tablets/mobiles */
+        /* ✅ Navbar fix on tablets/mobiles */
         .nav-links {
           gap: 20px;
           flex-wrap: wrap;
+          padding: 0 15px; /* keep links away from edges */
         }
         .nav-links a {
           font-size: 14px;
           padding: 6px 10px;
         }
-        /* ✅ Fix image issue */
+        /* ✅ Image fix */
         #right img {
           height: auto;
           max-height: 60vh;
+          width: 100%;
           object-fit: contain;
         }
       }
@@ -70,6 +75,7 @@
         }
         .nav-links {
           gap: 10px;
+          padding: 0 10px;
         }
         .nav-links a {
           font-size: 12px;
@@ -77,6 +83,7 @@
         }
         #right img {
           max-height: 50vh;
+          object-fit: contain;
         }
       }
 
@@ -84,7 +91,7 @@
 
       .nav-header {
         background-color: #ff7070;
-        padding: 20px 0;
+        padding: 15px 0;
         text-align: center;
       }
 
@@ -94,6 +101,7 @@
         gap: 60px;
         list-style: none;
         align-items: center;
+        padding: 0 30px; /* ✅ add padding to prevent edge cut */
       }
 
       .nav-links a {
@@ -235,8 +243,8 @@
           <div id="container">
             <section><h2 class="lorem-title-small">LOREM IPSUM</h2></section>
             <section class="gradient-textbox">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id est vitae
-              dolor rhoncus tristique. Maecenas metus quam, rhoncus euismod lorem in,
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id est
+              vitae dolor rhoncus tristique. Maecenas metus quam, rhoncus euismod lorem in,
               sollicitudin viverra eros. Donec dictum luctus quam ut tristique.
             </section>
             <section><button>Click Me</button></section>
@@ -265,7 +273,12 @@
             </section>
             <section>
               click
-              <span><img src="./icons8-arrow-30.png" alt="arrow" style="height: 20px; width: 20px; padding-left: 5px" /></span>
+              <span
+                ><img
+                  src="./icons8-arrow-30.png"
+                  alt="arrow"
+                  style="height: 20px; width: 20px; padding-left: 5px"
+              /></span>
             </section>
           </main>
         </div>
