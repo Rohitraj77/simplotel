@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ✅ disable zoom -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Restaurant - Order Food</title>
     <style>
       * {
@@ -30,31 +31,31 @@
       /* Scale dynamically for different screens */
       @media (max-width: 1600px) {
         .scale-container {
-          transform: scale(0.9);
+          transform: scale(0.95);
         }
       }
 
       @media (max-width: 1200px) {
         .scale-container {
-          transform: scale(0.8);
+          transform: scale(0.9);
         }
       }
 
       @media (max-width: 992px) {
         .scale-container {
-          transform: scale(0.7);
+          transform: scale(0.85);
         }
       }
 
       @media (max-width: 768px) {
         .scale-container {
-          transform: scale(0.6);
+          transform: scale(0.8); /* bigger than old 0.6 */
         }
       }
 
       @media (max-width: 480px) {
         .scale-container {
-          transform: scale(0.5);
+          transform: scale(0.75); /* bigger than old 0.5 */
         }
       }
 
@@ -77,7 +78,7 @@
       .nav-links a {
         color: #000;
         text-decoration: none;
-        font-size: 18px;
+        font-size: 20px; /* slightly bigger */
         font-weight: bold;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -121,8 +122,8 @@
         background-color: #ff6b6b;
         color: white;
         border: none;
-        padding: 10px 20px;
-        font-size: 14px;
+        padding: 12px 24px; /* bigger */
+        font-size: 16px;    /* bigger */
         text-transform: uppercase;
         letter-spacing: 1px;
         cursor: pointer;
@@ -131,9 +132,9 @@
 
       .gradient-textbox {
         background: linear-gradient(to right, #fdf2a5, #ffc6c7);
-        padding: 20px;
+        padding: 24px; /* bigger */
         border-radius: 10px;
-        font-size: 16px;
+        font-size: 18px; /* bigger */
         line-height: 1.6;
         color: #333;
       }
@@ -178,13 +179,13 @@
         flex-direction: column;
         gap: 15px;
         background-color: #ff7070;
-        padding: 20px;
+        padding: 24px; /* bigger */
         border-radius: 10px;
         color: white;
       }
 
       .lorem-title-small {
-        font-size: 36px;
+        font-size: 40px; /* bigger */
         font-weight: 900;
         color: #000;
         text-transform: uppercase;
