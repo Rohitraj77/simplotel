@@ -87,7 +87,7 @@
     #right img {
       width: 100%;
       height: 100%;
-      object-fit: cover;  
+      object-fit: cover;   /* ✅ always cover full */
       border-radius: 0;    
     }
 
@@ -98,7 +98,7 @@
       padding: 15px;
       gap: 15px;
       background: linear-gradient(to right, #fef7ad, #feb3ee);
-      height: 100vh;  /* ✅ match screen */
+      height: 100vh;
     }
     .left {
       flex: 1;
@@ -144,11 +144,10 @@
         height: 50%;           
       }
       #right img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;  /* ✅ show full image */
-  background: #fff;     /* or background: #fdf2a5; to match left gradient */
-}
+        width: 100%;
+        height: 100%;
+        object-fit: cover;   /* ✅ no gaps in mobile */
+      }
 
       /* ✅ Secondpage fix */
       #secondpage {
@@ -160,7 +159,6 @@
         height: 50%; 
       }
       .left {
-        display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 6px;
       }
@@ -181,13 +179,8 @@
       .lorem-title-small { font-size: 18px; }
       .gradient-textbox { font-size: 12px; }
 
-      /* ✅ Second page images smaller */
-      .left {
-        grid-template-columns: 1fr 1fr;
-      }
       .left img {
-        height: auto;
-        aspect-ratio: 1/1;   /* square look */
+        aspect-ratio: 1/1; 
       }
     }
   </style>
@@ -243,4 +236,3 @@
   </div>
 </body>
 </html>
-
