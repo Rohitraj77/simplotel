@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Restaurant - Order Food</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -16,7 +17,7 @@
     }
     .nav-links {
       display: flex;
-      justify-content: center;   /* ✅ keep centered */
+      justify-content: center;
       align-items: center;
       gap: clamp(10px, 4vw, 60px);
       list-style: none;
@@ -42,7 +43,7 @@
     #firstpage {
       display: flex;
       flex-direction: row;
-      height: 90vh;  /* ✅ fixed height like design */
+      height: 90vh;
     }
     #left, #right {
       flex: 1;
@@ -80,7 +81,6 @@
       text-transform: uppercase;
     }
 
-    /* ✅ Right image fills full half */
     #right {
       height: 100%;
       width: 100%;
@@ -88,8 +88,8 @@
     #right img {
       width: 100%;
       height: 100%;
-      object-fit: cover;   /* ✅ cover full space */
-      border-radius: 0;    /* no rounding */
+      object-fit: cover;
+      border-radius: 0;
     }
 
     /* ===== Second Page ===== */
@@ -134,17 +134,52 @@
 
     /* ===== Responsive tweaks ===== */
     @media (max-width: 768px) {
-      #firstpage, #secondpage { flex-direction: column; }
-      #firstpage { height: auto; } /* stack gracefully */
-      .left img { height: 120px; }
+      /* ✅ First page split 50-50 */
+      #firstpage {
+        flex-direction: column;
+        height: 100vh;
+      }
+      #left, #right {
+        width: 100%;
+        height: 50%;  /* equal split */
+      }
+      #container {
+        max-width: 90%;
+      }
+      .lorem-title-small {
+        font-size: 24px;  /* ✅ bigger text in mobile */
+      }
+      .gradient-textbox {
+        font-size: 14px;  /* ✅ bigger text in mobile */
+      }
+      #right img {
+        object-fit: cover;
+      }
+
+      /* ✅ Secondpage stack */
+      #secondpage {
+        flex-direction: column;
+        height: auto;
+      }
+      .left {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      .left img {
+        height: 140px;  /* ✅ make images bigger in mobile */
+      }
+      .right main {
+        max-width: 95%;
+      }
     }
+
     @media (max-width: 480px) {
       .nav-links { gap: 8px; }
       .nav-links a { font-size: 12px; }
-      button { font-size: 11px; padding: 6px 10px; }
-      .lorem-title-small { font-size: 18px; }
-      .gradient-textbox { font-size: 12px; }
-      .left img { height: 100px; }
+      button { font-size: 12px; padding: 8px 14px; }
+      .lorem-title-small { font-size: 20px; }
+      .gradient-textbox { font-size: 14px; }
+      .left img { height: 120px; }
     }
   </style>
 </head>
