@@ -18,7 +18,7 @@
       justify-content: center;
       align-items: center;
       list-style: none;
-      gap: 15px;
+      gap: 12px;
       flex-wrap: nowrap;
     }
     .nav-links a {
@@ -27,14 +27,13 @@
       font-size: 12px;
       font-weight: 600;
       text-transform: uppercase;
-      white-space: nowrap;
     }
     .hamburger { font-weight: bold; font-size: 14px; }
 
     /* FIRST PAGE */
     #firstpage {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: row;   /* ✅ Always side by side */
       min-height: 70vh;
     }
     #left, #right {
@@ -42,12 +41,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 15px;
+      padding: 10px;
     }
     #left {
       background: linear-gradient(to right, #fdf2a5, #ffc6c7);
     }
-    #container { max-width: 320px; }
+    #container { max-width: 90%; }
     .lorem-title-small {
       font-size: 20px;
       font-weight: 900;
@@ -58,7 +57,7 @@
       padding: 10px;
       border-radius: 6px;
       font-size: 12px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       line-height: 1.4;
     }
     button {
@@ -72,7 +71,8 @@
     }
     #right img {
       width: 100%;
-      max-width: 300px;
+      max-width: 95%;    /* ✅ Fit image properly */
+      height: auto;
       border-radius: 8px;
       object-fit: cover;
     }
@@ -80,7 +80,7 @@
     /* SECOND PAGE */
     #secondpage {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: row;   /* ✅ Always side by side */
       background: linear-gradient(to right, #fef7ad, #feb3ee);
       padding: 15px;
       gap: 15px;
@@ -116,15 +116,12 @@
       margin: 6px 0;
     }
 
-    /* ✅ PHONE VIEW EXACTLY LIKE IMAGE */
+    /* ✅ Phone adjustments but still side by side */
     @media (max-width: 768px) {
-      .nav-links { gap: 8px; }
+      .nav-links { gap: 6px; }
       .nav-links a { font-size: 11px; }
-      #firstpage { flex-direction: row; }
-      #left, #right { flex: 1 1 50%; }
-      #right img { max-width: 100%; height: auto; }
-      #secondpage { flex-direction: row; }
-      .left, .right { flex: 1 1 50%; }
+      #firstpage, #secondpage { flex-direction: row; }
+      #right img { max-width: 100%; }
     }
   </style>
 </head>
